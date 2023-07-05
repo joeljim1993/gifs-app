@@ -31,8 +31,18 @@ private organizeHistory(tag:string){
 
   this._tagsHistory.unshift( tag);
   this._tagsHistory = this.tagsHistory.splice(0,10);
+  this.saveLocalStorage();
 }
 
+private saveLocalStorage():void{
+  localStorage.setItem('history',JSON.stringify( this._tagsHistory ))
+}
+
+private loadLocalStorage():void{
+  if ( !localStorage.getItem('history') ) return;
+
+  this._tagsHistory = JSON.parse( localStorage.getItem('history')!)
+}
 // agrega la busqueda hecha al tagHistory
 searchTags(tag:string):void{
   if( tag.length === 0) return;
