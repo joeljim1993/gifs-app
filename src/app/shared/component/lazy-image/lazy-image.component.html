@@ -1,1 +1,23 @@
-<p>lazy-image works!</p>
+<div class="d-flex justify-content-center">
+
+  <!-- onload es un evento de las imagenes al ser cargadas  -->
+  <!-- [ngStyle] permite manejar stylos dada una condicion  -->
+  <img
+  [src]="url"
+  class="card-img-top animate__animated animate__bounce"
+  [alt]="alt"
+  (load)="onLoad()"
+  [ngStyle]="{display: hasLoaded ? '': 'none' }"
+  >
+
+  <!-- *ngIf muestra la imagen dependiendo si la condicion(hasLoaded) es true o false  -->
+  <img
+  *ngIf="!hasLoaded"
+  src="../../../../assets/loader.svg"
+  height="35"
+  width="35"
+  class="mt-3"
+
+  >
+
+</div>

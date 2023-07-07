@@ -8,14 +8,14 @@ import { Gif, SearchResponse } from './../interfaces/gifs.interface';
 @Injectable({providedIn: 'root'})
 export class GifsService {
 
-  public gifList:Gif[] = [];
+public gifList:Gif[] = [];
   // arreglo donde se guardaran las busquedas
 private _tagsHistory: string[] = [];
 
 private apiKey:string       = "RNodhamB4QEwngKBRcGaDSk8rrY9p4lk";
 private serviceUrl:string   = 'https:api.giphy.com/v1/gifs'
 
-  constructor( private http:HttpClient ) { }
+constructor( private http:HttpClient ) { }
 
 // getter para obterner el tagHistory como una copia y no pueda ser modificado
 get tagsHistory(){
@@ -39,10 +39,13 @@ private saveLocalStorage():void{
 }
 
 private loadLocalStorage():void{
+  console.log("ejecutando loadLocalStorage");
+
   if ( !localStorage.getItem('history') ) return;
 
   this._tagsHistory = JSON.parse( localStorage.getItem('history')!)
 }
+
 // agrega la busqueda hecha al tagHistory
 searchTags(tag:string):void{
   if( tag.length === 0) return;

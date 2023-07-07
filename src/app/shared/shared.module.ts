@@ -4,7 +4,7 @@ import { SidebarComponent } from './component/sidebar/sidebar.component';
 import { LazyImageComponent } from './component/lazy-image/lazy-image.component';
 
 
-
+// si no se exports un componente dado, no se podra ver en otros modulos 
 @NgModule({
   declarations: [
     SidebarComponent,
